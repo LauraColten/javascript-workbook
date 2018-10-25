@@ -1,5 +1,14 @@
 'use strict';
 
+/*
+Player x chooses a row and a column. Choice is stored in a multidimensional array.
+Display an 'X' on board.
+board[row][column] = 'X'
+Player x changes to player y.
+Player y chooses a row and a column. Choice is stored in a multidimensional array.
+Display a 'Y' on board.
+board[row][column] = 'Y'
+*/
 const assert = require('assert');
 const readline = require('readline');
 const rl = readline.createInterface({
@@ -24,23 +33,54 @@ function printBoard() {
 }
 
 function horizontalWin() {
-  // Your code here
+  if (playerTurn === board[0][0] && playerTurn === board[0][1] && playerTurn === board[0][2]) {
+    return true;
+  }
+  if (playerTurn === board[1][0] && playerTurn === board[1][1] && playerTurn === board[1][2]) {
+    return true;
+  }
+  if (playerTurn === board[2][0] && playerTurn === board[2][1] && playerTurn === board[2][2]) {
+    return true;
+  }
 }
 
+
 function verticalWin() {
-  // Your code here
+  if (playerTurn === board[0][0] && playerTurn === board[1][0] && playerTurn === board[2][0]) {
+    return true;
+  }
+  if (playerTurn === board[0][1] && playerTurn === board[1][1] && playerTurn === board[2][1]) {
+    return true;
+  }
+  if (playerTurn === board[0][2] && playerTurn === board[1][2] && playerTurn === board[2][2]) {
+    return true;
+  }
 }
 
 function diagonalWin() {
-  // Your code here
+  if (playerTurn === board[0][0] && playerTurn === board[1][1] && playerTurn === board[2][2]) {
+    return true;
+  }
+  if (playerTurn === board[0][2] && playerTurn === board[1][1] && playerTurn === board[2][0]) {
+    return true;
+  } 
 }
 
 function checkForWin() {
-  // Your code here
+  return diagonalWin() || horizontalWin() || verticalWin();
 }
 
 function ticTacToe(row, column) {
-  // Your code here
+  board[row][column] = playerTurn;
+  if (checkForWin()){
+    console.log(`${playerTurn} wins!`)
+    process.exit();
+  }
+  if (playerTurn === 'X') {
+    playerTurn = 'O';
+  } else {
+    playerTurn = 'X';
+  }  
 }
 
 function getPrompt() {

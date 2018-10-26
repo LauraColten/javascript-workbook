@@ -49,7 +49,7 @@ bool function isConsonant
 
 
 function pigLatin(word) {
-  word = word.toLowerCase().trim();
+  const newWord = word.toLowerCase().trim();
   const breakPoint = firstVowel(word); 
   const firstPart = word.slice(0, breakPoint); 
   const secondPart = word.slice(breakPoint);

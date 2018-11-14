@@ -6,9 +6,24 @@ function forEach(arr, callback) {
   // Your code here
 }
 
-function map(arr, callback) {
-  // Your code here
+const myMap = (arr, callback) => {
+  const newArr = [];
+  for (let index = 0; index < arr.length; index++ ){
+      console.log(arr[index]);
+      const formattedItem = callback(arr[index]);
+      newArr.push(formattedItem);
+  }
+  return newArr;
 }
+
+const nameArr = ['Kevin', 'Laura', 'Eden', 'Eve', 'Arlo', 'Archie'];
+
+const nameArrUpperCase = () => myMap(nameArr, function(string) {
+  return string.toUpperCase();
+});
+
+nameArrUpperCase();
+
 
 function filter(arr, callback) {
   // Your code here
